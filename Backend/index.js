@@ -1,6 +1,6 @@
 import express from 'express'
-import dotenv from 'dotenv'
-dotenv.config()
+import {config} from 'dotenv'
+
 import connectDB from './src/service/DBconnection.js'
 import cookieParser from 'cookie-parser'
 import authRouter from './src/routes/auth.routes.js'
@@ -9,6 +9,7 @@ import cors from 'cors'
 import { geminiResponse } from './src/service/GeminiRespose.js'
 
 const app = express()
+config({ path: ".env" });
 
 app.use(
   cors({
@@ -34,5 +35,5 @@ app.use('/api/user',userRouter)
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on port ${port}`);
 })
