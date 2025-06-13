@@ -8,16 +8,15 @@ import userRouter from './src/routes/user.routes.js'
 import cors from 'cors'
 import { geminiResponse } from './src/service/GeminiRespose.js'
 
-const corsOptions = {
-  origin: "http://localhost:5173",
-  credentials: true,
-}
-
 const app = express()
-app.use(cookieParser())
 
-app.use(cors(corsOptions));
-// app.options('/*', cors(corsOptions)); 
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true
+  })
+);
+app.use(cookieParser()) 
 
 
 app.use(express.json())
