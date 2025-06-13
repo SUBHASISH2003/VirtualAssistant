@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const asiosInstance = axios.create({
-    baseURL:"http://localhost:3000/api",
+    baseURL:"https://virtualassistant-9qd7.onrender.com",
     withCredentials: true,
 })
 
